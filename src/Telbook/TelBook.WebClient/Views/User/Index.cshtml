@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Html.Partial("EasyUI")
+    <style type="text/css">
+        #searchForm td {
+            width:250px;
+        }
+    </style>
+    <script src="~/Scripts/views/user.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            window.user.bindGrid();
+            window.user.bindButton();
+        });
+    </script>
+</head>
+<body>
+    <div class="easyui-layout" data-options="fit: true">
+        <div data-options="region: 'north', border: false" style="overflow: hidden;padding:5px;border-bottom-width:1px;">
+            <span style="color:blue;">请输入条件进行查询:</span>
+            <table id="searchForm">
+                <tr>
+                    <td>
+                         用户名：<input id="txtUserName" />
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+                        <a id="btnSearch" class="easyui-linkbutton" data-options="iconCls: 'icon-search'">查询</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div data-options="region: 'center', border: false">
+            <table id="userGrid">
+            </table>
+        </div>
+        </div>
+</body>
+</html>

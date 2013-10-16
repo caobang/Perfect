@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+<style type="text/css">
+    #addForm td {
+        width:230px;
+        text-align:right;
+    }
+    .validatebox-text
+    {
+        border-width: 1px; border-style: solid;
+        height: 19px; line-height: 17px;
+        padding-top: 1px; padding-left: 3px; padding-bottom: 2px; padding-right: 3px;
+        background-attachment: scroll; background-size: auto; background-origin: padding-box; background-clip: border-box;
+    }
+    .validatebox-invalid
+    {
+        border-color: #cc3300;
+        background-repeat: repeat-x; background-position: center bottom;
+        background-color: White; background-image: url("~/Scripts/easyui/jquery-extensions/examples/validatebox/customeCss/invalid_line.gif");
+    }
+
+</style>
+<script type="text/javascript">
+    $(function () {
+        $("#selGroup").combobox({
+            url: "TelGroup/GetByUserID",
+            valueField: 'ID',
+            textField: 'Name',
+            required: true,
+            editable:false
+        });
+    });
+    </script>
+<table id="addForm" style="padding:5px;">
+    <tr>
+        <td>
+            姓名：
+            <input id="txtName" name="Name" class="easyui-validatebox" type="text" data-options="required:true" />
+        </td>
+        <td>
+            性别：
+            <select id="selSex" name="Sex" style="width:155px;" class="easyui-combobox" data-options="editable:false" >
+                <option value="1" selected="selected">男</option>
+                <option value="2">女</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            电话：
+            <input id="txtTelPhone" name="TelPhone" class="easyui-validatebox" type="text" data-options="required:true" />
+        </td>
+        <td>
+            地址：
+            <input id="txtAddress" name="Address" class="easyui-validatebox" type="text" data-options="required:true" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            联系人组：
+            <select id="selGroup" name="GroupID" style="width:155px;"  ></select>
+        </td>
+    </tr>
+</table>

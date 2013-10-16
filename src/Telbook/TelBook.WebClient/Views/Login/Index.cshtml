@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>系统登录-电话本</title>
+    @Html.Partial("EasyUI")
+    <style type="text/css">
+    input {
+        width:160px;
+    }
+    table td{
+        height:25px;
+        text-align:right;
+    }
+    .validatebox-text
+    {
+        border-width: 1px; border-style: solid;
+        height: 19px; line-height: 17px;
+        padding-top: 1px; padding-left: 3px; padding-bottom: 2px; padding-right: 3px;
+        background-attachment: scroll; background-size: auto; background-origin: padding-box; background-clip: border-box;
+    }
+    .validatebox-invalid
+    {
+        border-color: #cc3300;
+        background-repeat: repeat-x; background-position: center bottom;
+        background-color: White; background-image: url("~/Scripts/easyui/jquery-extensions/examples/validatebox/customeCss/invalid_line.gif");
+    }
+    </style>
+    <script src="~/Scripts/views/login.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            window.login.bindControl();
+        });
+    </script>
+</head>
+<body>
+    <div id="LoginWin" style="padding: 10px;">
+        <form id="loginForm" method="post">
+            <table>
+                <tr>
+                    <td>用户名：</td>
+                    <td><input class="easyui-validatebox" type="text" id="txtUserName" name="UserName"  data-options="required:true" /></td>
+                </tr>
+                <tr>
+                    <td>密码：</td>
+                    <td><input class="easyui-validatebox" type="password" id="txtPassword" name="Password"  data-options="required:true" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <a id="btnLogin" class="easyui-linkbutton" data-options="iconCls: 'icon-standard-tick'">登录</a>
+                        <a id="btnReset" class="easyui-linkbutton" data-options="iconCls: 'icon-standard-bin-closed'">重置</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+</body>
+</html>

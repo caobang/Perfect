@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B91804C3-D4C5-4B98-9CC2-88A3B290C2AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perfect", "src\Perfect\Perfect.csproj", "{9DAA6F94-58DB-4DA0-B0B8-2D8B8E172C6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platform", "Platform", "{3E37CF76-B841-420F-8C72-C4AEAA5A3155}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TelBook", "TelBook", "{C1A5FA12-7BE6-4C71-9F62-FB384FE3A859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telbook.Application", "src\Telbook\Telbook.Application\Telbook.Application.csproj", "{A912D55E-73F7-457E-88FD-8E9DA793728E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelBook.DataObjects", "src\Telbook\TelBook.DataObjects\TelBook.DataObjects.csproj", "{F13B1037-50E7-40E9-856D-80B3171134EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelBook.Domain", "src\Telbook\TelBook.Domain\TelBook.Domain.csproj", "{32B8F9A8-F728-4522-B014-BA1961BA2F82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelBook.WebClient", "src\Telbook\TelBook.WebClient\TelBook.WebClient.csproj", "{C8B2DF2E-E7BE-4227-B648-7E774A08C783}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DAA6F94-58DB-4DA0-B0B8-2D8B8E172C6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DAA6F94-58DB-4DA0-B0B8-2D8B8E172C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DAA6F94-58DB-4DA0-B0B8-2D8B8E172C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DAA6F94-58DB-4DA0-B0B8-2D8B8E172C6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A912D55E-73F7-457E-88FD-8E9DA793728E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A912D55E-73F7-457E-88FD-8E9DA793728E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A912D55E-73F7-457E-88FD-8E9DA793728E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A912D55E-73F7-457E-88FD-8E9DA793728E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F13B1037-50E7-40E9-856D-80B3171134EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F13B1037-50E7-40E9-856D-80B3171134EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F13B1037-50E7-40E9-856D-80B3171134EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F13B1037-50E7-40E9-856D-80B3171134EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B8F9A8-F728-4522-B014-BA1961BA2F82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B8F9A8-F728-4522-B014-BA1961BA2F82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B8F9A8-F728-4522-B014-BA1961BA2F82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B8F9A8-F728-4522-B014-BA1961BA2F82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8B2DF2E-E7BE-4227-B648-7E774A08C783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B2DF2E-E7BE-4227-B648-7E774A08C783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B2DF2E-E7BE-4227-B648-7E774A08C783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B2DF2E-E7BE-4227-B648-7E774A08C783}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9DAA6F94-58DB-4DA0-B0B8-2D8B8E172C6E} = {B91804C3-D4C5-4B98-9CC2-88A3B290C2AF}
+		{A912D55E-73F7-457E-88FD-8E9DA793728E} = {C1A5FA12-7BE6-4C71-9F62-FB384FE3A859}
+		{F13B1037-50E7-40E9-856D-80B3171134EF} = {C1A5FA12-7BE6-4C71-9F62-FB384FE3A859}
+		{32B8F9A8-F728-4522-B014-BA1961BA2F82} = {C1A5FA12-7BE6-4C71-9F62-FB384FE3A859}
+		{C8B2DF2E-E7BE-4227-B648-7E774A08C783} = {C1A5FA12-7BE6-4C71-9F62-FB384FE3A859}
+	EndGlobalSection
+EndGlobal

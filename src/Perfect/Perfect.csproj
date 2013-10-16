@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9DAA6F94-58DB-4DA0-B0B8-2D8B8E172C6E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Perfect</RootNamespace>
+    <AssemblyName>Perfect</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\packages\Autofac.3.1.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\packages\log4net.2.0.2\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DesignByContract\AssertionException.cs" />
+    <Compile Include="DesignByContract\Check.cs" />
+    <Compile Include="DesignByContract\DesignByContractException.cs" />
+    <Compile Include="DesignByContract\InvariantException.cs" />
+    <Compile Include="DesignByContract\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignByContract\PostconditionException.cs" />
+    <Compile Include="DesignByContract\PreconditionException.cs" />
+    <Compile Include="Domain\AggregateRoot.cs" />
+    <Compile Include="Domain\IAggregateRoot.cs" />
+    <Compile Include="Event\CommonDomainEvent.cs" />
+    <Compile Include="Event\DomainEvent.cs" />
+    <Compile Include="Event\EventProcesser.cs" />
+    <Compile Include="Event\IDomainEvent.cs" />
+    <Compile Include="Extension\EasyUI\DataExtension.cs" />
+    <Compile Include="Extension\EasyUI\GridData.cs" />
+    <Compile Include="Extension\Helper.cs" />
+    <Compile Include="Extension\MapHelper.cs" />
+    <Compile Include="Extension\OrderColumnAttribute.cs" />
+    <Compile Include="Extension\PagingResult.cs" />
+    <Compile Include="Ioc\Impl\Autofac\AutofacObjectContainer.cs" />
+    <Compile Include="Ioc\Impl\Unity\UnityObjectContainer.cs" />
+    <Compile Include="Ioc\IObjectContainer.cs" />
+    <Compile Include="Ioc\LifeStyle.cs" />
+    <Compile Include="Ioc\ObjectContainer.cs" />
+    <Compile Include="Log\ILogger.cs" />
+    <Compile Include="Log\ILoggerFactory.cs" />
+    <Compile Include="Log\Impl\EmptyLogger.cs" />
+    <Compile Include="Log\Impl\EmptyLoggerFactory.cs" />
+    <Compile Include="Log\Impl\Log4Net\Log4NetLogger.cs" />
+    <Compile Include="Log\Impl\Log4Net\Log4NetLoggerFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Impl\EntityFrameWork\EFRepository.cs" />
+    <Compile Include="Repository\Impl\EntityFrameWork\EFRepositoryContext.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\IRepositoryContext.cs" />
+    <Compile Include="Repository\RepositoryContextFactory.cs" />
+    <Compile Include="Repository\RepositoryExtension.cs" />
+    <Compile Include="Specification\AndNotSpecification.cs" />
+    <Compile Include="Specification\AndSpecification.cs" />
+    <Compile Include="Specification\AnySpecification.cs" />
+    <Compile Include="Specification\CompositeSpecification.cs" />
+    <Compile Include="Specification\ExpressionExtension.cs" />
+    <Compile Include="Specification\ExpressionFuncExtender.cs" />
+    <Compile Include="Specification\ExpressionSpecification.cs" />
+    <Compile Include="Specification\ICompositeSpecification.cs" />
+    <Compile Include="Specification\ISpecification.cs" />
+    <Compile Include="Specification\ISpecificationParser.cs" />
+    <Compile Include="Specification\NoneSpecification.cs" />
+    <Compile Include="Specification\NotSpecification.cs" />
+    <Compile Include="Specification\OrSpecification.cs" />
+    <Compile Include="Specification\ParameterRebinder.cs" />
+    <Compile Include="Specification\Specification.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DesignByContract\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

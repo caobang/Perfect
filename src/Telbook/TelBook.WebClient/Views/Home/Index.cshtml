@@ -1,0 +1,220 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Html.Partial("EasyUI")
+    <style type="text/css">
+        body{font-size: 12px;}
+        
+        .top-bar { position: absolute; width: 100%; height: 52px; top: 0px; left: 0px; }
+        .top-bar-left { position: absolute; width: 500px; height: 52px; }
+        .top-bar-right { position: absolute; width: 400px; height: 52px; right: 0px; }
+        .top-bar-right #timerSpan { position: absolute; padding-top: 5px; right: 10px; }
+        .top-bar-right #themeSpan { position: absolute; width: 350px; top: 22px; right: 5px; text-align: right; }
+        
+        .top-toolbar { position: absolute; font-weight: normal; padding: 0px; width: 100%; height: 27px; top: 52px; left: 0px; border-top-width: 1px; border-bottom-width: 0px; z-index: 100; }
+        .top-toolbar #infobar { position: absolute; width: 400px; left: 10px; height: 26px; line-height: 26px; font-size: 12px; }
+        .top-toolbar #searchbar { position: absolute; width: 400px; left: 400px; padding-top: 1px; }
+        .top-toolbar #buttonbar { position: absolute; width: 600px; right: 5px; text-align: right; }
+        
+        
+        #navTab>div.tabs-header { border-right-width: 0px; }
+        #navMenu_list { padding: 0px; margin: 0px; }
+        #navMenu_list>li { line-height: 26px; list-style-type: none; }
+        #navMenu_list>li>div.panel-header { height: 26px; line-height: 26px; padding: 0px; margin: 0px; font-weight: normal; border-top-width: 1px; border-bottom-width: 0px; }
+        #navMenu_list>li:first-child>div.panel-header { border-top-width: 0px; }
+        #navMenu_list>li>div.panel-header a { width: 100%; height: 100%; color: inherit; padding: 0px; margin: 0px; text-decoration: none; display: inline-block; }
+        
+        .nav-menu { padding-left: 10px; }
+        .nav-menu-icon { padding-left: 25px; background-position: left center; }
+        
+        #mainTab>div.tabs-header { border-right-width: 0px; }
+        #mainTab_tools table{ border-width: 0px; border-collapse: collapse; border-spacing: 0px; }
+        #mainTab_tools table td{ padding: 0px; }
+        
+        #mainLayout>div.layout-panel-east>div.panel-header { border-left-width: 0px; }
+        
+        #eastLayout>div.layout-panel-center>div.panel-header { border-top-width: 0px; }
+        
+        .portlet-list { padding-left: 20px; margin: 5px; line-height: 20px; }
+        
+        .donate-name 
+        {
+            font-weight: bold;
+            background-color: rgb(70, 136, 71); color: #fff; line-height: 14px; padding-top: 2px; padding-bottom: 2px; padding-left: 4px; padding-right: 4px;
+            border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;
+        }
+        .donate-date { padding: 5px; }
+        .donate-total { font-weight: bold; color: Red; }
+        
+        ul.link-list>li>a
+        {
+            padding-left: 10px; white-space: nowrap;
+        }
+    </style>
+    <script src="~/Scripts/views/home.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            window.home.instMainMenus();
+            window.home.instFavoMenus();
+            window.home.instTimerSpan();
+            window.home.bindNavTabButtonEvent();
+            window.home.bindToolbarButtonEvent();
+            window.home.bindMainTabButtonEvent();
+
+            $("#mainLayout").layout("resize");
+            $("#btnExit").click(function () {
+                $.easyui.messager.confirm("操作提醒", "您确定要退出当前程序并关闭该网页？", function (c) {
+                    if (c) { $.util.closeWindowNoConfirm(); }
+                });
+            });
+        });
+    </script>
+</head>
+<body id="mainLayout" class="easyui-layout" data-options="fit: true"  style="padding: 0px; margin: 0px;" >
+    <div id="northPanel" data-options="region: 'north', border: false" style="height: 80px; overflow: hidden;">
+        <div id="topbar" class="top-bar">
+            <div class="top-bar-left">
+                <h1 style="margin-left: 10px; margin-top: 10px;">电话本Demo</h1>
+            </div>
+            <div class="top-bar-right">
+                <div id="timerSpan"></div>
+                <div id="themeSpan">
+                    <span>更换皮肤风格：</span>
+                    <select id="themeSelector"></select>
+                    <a id="btnHideNorth" class="easyui-linkbutton" data-options="plain: true, iconCls: 'layout-button-up'"></a>
+                </div>
+            </div>
+        </div>
+        <div id="toolbar" class="panel-header panel-header-noborder top-toolbar" >
+            <div id="infobar">
+                <span class="icon-hamburg-user" style="padding-left: 25px; background-position: left center;">@Html.Encode(ViewData["Name"])</span>
+            </div>
+            <div id="searchbar">
+                <input id="topSearchbox" class="easyui-searchbox" data-options="width: 350, height: 25, prompt: '请输入您要查找的内容关键词', menu: '#topSearchboxMenu'" />
+                <div id="topSearchboxMenu" style="width: 85px;">
+                    <div data-options="name:'0', iconCls: 'icon-hamburg-zoom'">查询类型</div>
+		            <div data-options="name:'1'">测试类型1</div>
+                    <div data-options="name:'2'">测试类型2</div>
+                    <div data-options="name:'3'">测试类型3</div>
+                    <div data-options="name:'4'">测试类型4</div>
+                </div>
+            </div>
+            <div id="buttonbar">
+                <a id="btnExit" class="easyui-linkbutton" data-options="plain: true, iconCls: 'icon-hamburg-sign-out'">退出系统</a>
+                <a id="btnShowNorth" class="easyui-linkbutton" data-options="plain: true, iconCls: 'layout-button-down'" style="display: none;"></a>
+            </div>
+        </div>
+    </div>
+
+    <div data-options="region: 'west', title: '菜单导航栏', iconCls: 'icon-standard-map', split: true, minWidth: 240, maxWidth: 500" style="width: 250px; padding: 1px;">
+        <div id="navTab" class="easyui-tabs" data-options="fit: true, border: true, tools: [{ id: 'navMenu_refresh', iconCls: 'icon-hamburg-refresh' }]">
+            <div data-options="title: '导航菜单', iconCls: 'icon-standard-application-view-tile', refreshable: false, selected: true">
+                <div id="westLayout" class="easyui-layout" data-options="fit: true">
+                    <div data-options="region: 'center', border: false" style="border-bottom-width: 1px;">
+                        <div id="westCenterLayout" class="easyui-layout" data-options="fit: true">
+                            <div data-options="region: 'north', split: false, border: false" style="height: 31px;">
+                                <div class="easyui-toolbar">
+                                    <a id="navMenu_expand" class="easyui-splitbutton" data-options="iconCls: 'icon-metro-expand2', menu: '#navMenu_toggleMenu'">展开</a>
+                                    <a id="navMenu_Favo" class="easyui-linkbutton" data-options="plain: true, iconCls: 'icon-standard-feed-add'">收藏</a>
+                                    <a id="navMenu_Rename" class="easyui-linkbutton" data-options="plain: true, iconCls: 'icon-hamburg-pencil'">重命名</a>
+                                    <div id="navMenu_toggleMenu" class="easyui-menu" data-options="hideOnMouseLeave: true">
+                                        <div id="navMenu_collapse" data-options="iconCls: 'icon-metro-contract2'">折叠当前</div>
+                                        <div class="menu-sep"></div>
+                                        <div id="navMenu_collapseCurrentAll" data-options="iconCls: 'icon-metro-expand'">展开当前所有</div>
+                                        <div id="navMenu_expandCurrentAll" data-options="iconCls: 'icon-metro-contract'">折叠当前所有</div>
+                                        <div class="menu-sep"></div>
+                                        <div id="navMenu_collapseAll" data-options="iconCls: 'icon-standard-arrow-out'">展开所有</div>
+                                        <div id="navMenu_expandAll" data-options="iconCls: 'icon-standard-arrow-in'">折叠所有</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-options="region: 'center', border: false">
+                                <ul id="navMenu_Tree" style="padding-top: 2px; padding-bottom: 2px;"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="westSouthPanel" data-options="region: 'south', border: false, split: true, minHeight: 32, maxHeight: 275" style="height: 275px; border-top-width: 1px;">
+                        <ul id="navMenu_list"></ul>
+                    </div>
+                </div>
+            </div>
+            <div data-options="title: '个人收藏', iconCls: 'icon-hamburg-star', refreshable: false">
+                <div id="westFavoLayout" class="easyui-layout" data-options="fit: true">
+                    <div data-options="region: 'north', split: false, border: false" style="height: 31px;">
+                        <div class="easyui-toolbar">
+                            <a id="favoMenu_expand" class="easyui-splitbutton" data-options="iconCls: 'icon-metro-expand2', menu: '#favoMenu_toggleMenu'">展开</a>
+                            <a id="favoMenu_Favo" class="easyui-linkbutton" data-options="plain: true, iconCls: 'icon-standard-feed-delete'">取消收藏</a>
+                            <a id="favoMenu_Rename" class="easyui-linkbutton" data-options="plain: true, iconCls: 'icon-hamburg-pencil'">重命名</a>
+                            <div id="favoMenu_toggleMenu" class="easyui-menu" data-options="hideOnMouseLeave: true">
+                                <div id="favoMenu_collapse" data-options="iconCls: 'icon-metro-contract2'">折叠当前</div>
+                                <div class="menu-sep"></div>
+                                <div id="favoMenu_collapseCurrentAll" data-options="iconCls: 'icon-metro-expand'">展开当前所有</div>
+                                <div id="favoMenu_expandCurrentAll" data-options="iconCls: 'icon-metro-contract'">折叠当前所有</div>
+                                <div class="menu-sep"></div>
+                                <div id="favoMenu_collapseAll" data-options="iconCls: 'icon-standard-arrow-out'">展开所有</div>
+                                <div id="favoMenu_expandAll" data-options="iconCls: 'icon-standard-arrow-in'">折叠所有</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-options="region: 'center', border: false">
+                        <ul id="favoMenu_Tree" style="padding-top: 2px; padding-bottom: 2px;"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-options="region: 'center'" style="padding: 1px;">
+        <div id="mainTab_tools">
+            <table>
+                <tr>
+                    <td><a id="mainTab_junmpHome" class="easyui-linkbutton easyui-tooltip" title="跳转至主页选项卡" data-options="plain: true, iconCls: 'icon-hamburg-home'"></a></td>
+                    <td><div class="datagrid-btn-separator" ></div></td>
+                    <td><a id="mainTab_closeTab" class="easyui-linkbutton easyui-tooltip" title="关闭当前选中的选项卡" data-options="plain: true, iconCls: 'icon-standard-application-form-delete'"></a></td>
+                    <td><a id="mainTab_closeOther" class="easyui-linkbutton easyui-tooltip" title="关闭除当前选中外的其他所有选项卡" data-options="plain: true, iconCls: 'icon-standard-cancel'"></a></td>
+                    <td><div class="datagrid-btn-separator" ></div></td>
+                    <td><a id="mainTab_closeLeft" class="easyui-linkbutton easyui-tooltip" title="关闭左侧所有选项卡" data-options="plain: true, iconCls: 'icon-standard-tab-close-left'"></a></td>
+                    <td><a id="mainTab_closeRight" class="easyui-linkbutton easyui-tooltip" title="关闭右侧所有选项卡" data-options="plain: true, iconCls: 'icon-standard-tab-close-right'"></a></td>
+                    <td><div class="datagrid-btn-separator" ></div></td>
+                    <td><a id="mainTab_closeAll" class="easyui-linkbutton easyui-tooltip" title="关闭所有选项卡" data-options="plain: true, iconCls: 'icon-standard-cross'"></a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="mainTab" class="easyui-tabs" data-options="fit: true, border: true, showOption: true, enableNewTabMenu: true, repeatable: true, tools: '#mainTab_tools'">
+            <div id="homePanel" data-options="title: '主页', iconCls: 'icon-hamburg-home'">
+
+            </div>
+        </div>
+    </div>
+
+    <div data-options="region: 'east', title: '日历', iconCls: 'icon-standard-date', split: false, minWidth: 200, maxWidth: 500" style="width: 220px; padding: 1px; border-left-width: 0px;" >
+        <div id="eastLayout" class="easyui-layout" data-options="fit: true">
+            <div data-options="region: 'north', split: false, border: false" style="height: 220px;">
+                <div class="easyui-calendar" data-options="fit: true"></div>
+            </div>
+            <div data-options="region: 'center', title: '联系人', iconCls: 'icon-standard-user'">
+                
+            </div>
+        </div>
+    </div>
+
+    <div data-options="region: 'south', title: '关于...', iconCls: 'icon-standard-information', collapsed: true, border: false" style="height: 70px;">
+        <div style="color: #4e5766; padding: 6px 0px 0px 0px; margin: 0px auto; text-align: center; font-size:12px; font-family:微软雅黑;">
+            @@2013 Copyright: ChenJianwei Persional.&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="http://www.chenjianwei.org" target="_blank" style="text-decoration: none;">关于 ChenJianwei</a><br />
+            建议使用&nbsp;
+            <a href="http://windows.microsoft.com/zh-CN/internet-explorer/products/ie/home" target="_blank" style="text-decoration: none;">IE(Version 9/10/11)</a>/
+            <a href="https://www.google.com/intl/zh-CN/chrome/browser/" target="_blank" style="text-decoration: none;">Chrome</a>/
+            <a href="http://firefox.com.cn/download/" target="_blank" style="text-decoration: none;">Firefox</a>
+            &nbsp;系列浏览器。
+        </div>
+    </div>
+</body>
+</html>
