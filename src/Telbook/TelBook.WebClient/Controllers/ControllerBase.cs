@@ -18,6 +18,7 @@ namespace TelBook.WebClient.Controllers
                 return Content("添加成功!");
             }
         }
+
         public ActionResult UpdateEntity(T user)
         {
             using (var applicationService = new ApplicationService())
@@ -26,6 +27,7 @@ namespace TelBook.WebClient.Controllers
                 return Content("编辑成功!");
             }
         }
+
         public ActionResult DeleteEntities(string IDs)
         {
             using (var applicationService = new ApplicationService())
